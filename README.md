@@ -1,4 +1,4 @@
-# rasqberry-pi-gen
+# RasQberry-pi-gen
 
 Tool used to create RasQberry Pi OS images on Raspberry Pi OS,
 which was in turn derived from the Raspbian project.
