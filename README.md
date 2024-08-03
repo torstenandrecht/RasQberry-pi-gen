@@ -1,6 +1,6 @@
-# pi-gen
+# rasqberry-pi-gen
 
-Tool used to create Raspberry Pi OS images, and custom images based on Raspberry Pi OS,
+Tool used to create RasQberry Pi OS images on Raspberry Pi OS,
 which was in turn derived from the Raspbian project.
 
 **Note**: Raspberry Pi OS 32 bit images are based primarily on Raspbian, while
@@ -8,13 +8,18 @@ Raspberry Pi OS 64 bit images are based primarily on Debian.
 
 ## Dependencies
 
-pi-gen runs on Debian-based operating systems released after 2017, and we
+rasqberry-pi-gen runs on Debian-based operating systems released after 2017, and we
 always advise you use the latest OS for security reasons.
+
+```update OS: 
+
+sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get autoremove -y && sudo apt-get autoclean -y
+```
 
 On other Linux distributions it may be possible to use the Docker build described
 below.
 
-To install the required dependencies for `pi-gen` you should run:
+To install the required dependencies for `rasqberry-pi-gen` you should run:
 
 ```bash
 apt-get install coreutils quilt parted qemu-user-static debootstrap zerofree zip \
@@ -28,10 +33,10 @@ package is `<tool>[:<debian-package>]`.
 ## Getting started with building your images
 
 Getting started is as simple as cloning this repository on your build machine. You
-can do so with:
+can do so with (non-root user)
 
 ```bash
-git clone https://github.com/RPI-Distro/pi-gen.git
+git clone --branch arm64 https://github.com/JanLahmann/RasQberry-pi-gen.git
 ```
 
 `--depth 1` can be added afer `git clone` to create a shallow clone, only containing
@@ -52,7 +57,7 @@ environment variables.
 
 The following environment variables are supported:
 
- * `IMG_NAME` (Default: `raspios-$RELEASE-$ARCH`, for example: `raspios-bookworm-armhf`)
+ * `IMG_NAME` (Default: `rasqberry-$RELEASE-$ARCH`, for example: `rasqberry-bookworm-armhf`)
 
    The name of the image to build with the current stage directories. Use this
    variable to set the root name of your OS, eg `IMG_NAME=Frobulator`.
@@ -130,7 +135,7 @@ The following environment variables are supported:
 
    Default system locale.
 
- * `TARGET_HOSTNAME` (Default: 'raspberrypi' )
+ * `TARGET_HOSTNAME` (Default: 'rasqberry-two' )
 
    Setting the hostname to the specified value.
 
@@ -157,7 +162,7 @@ The following environment variables are supported:
    To get the current value from a running system, look in
    `/etc/timezone`.
 
- * `FIRST_USER_NAME` (Default: `pi`)
+ * `FIRST_USER_NAME` (Default: `rasqberry`)
 
    Username for the first user. This user only exists during the image creation process. Unless
    `DISABLE_FIRST_BOOT_USER_RENAME` is set to `1`, this user will be renamed on the first boot with
@@ -208,13 +213,13 @@ The following environment variables are supported:
 A simple example for building Raspberry Pi OS:
 
 ```bash
-IMG_NAME='raspios'
+IMG_NAME='rasqberry-two'
 ```
 
-The config file can also be specified on the command line as an argument the `build.sh` or `build-docker.sh` scripts.
+The config file (execution as root) can also be specified on the command line as an argument the `build.sh` or `build-docker.sh` scripts.
 
 ```
-./build.sh -c myconfig
+./build.sh -c config
 ```
 
 This is parsed after `config` so can be used to override values set there.
@@ -316,7 +321,7 @@ and `--privileged` options are already set by the script and should not be redef
 
 ### Raspbian Stage Overview
 
-The build of Raspbian is divided up into several stages for logical clarity
+The build of RasQberry is divided up into several stages for logical clarity
 and modularity.  This causes some initial complexity, but it simplifies
 maintenance and allows for more easy customization.
 
@@ -327,13 +332,13 @@ maintenance and allows for more easy customization.
    installs `raspberrypi-bootloader` which is missed by debootstrap.  The
    minimal core is installed but not configured. As a result, this stage will not boot.
 
- - **Stage 1** - truly minimal system.  This stage makes the system bootable by
+ - **Stage 1** - truly minimal RasbBerry system.  This stage makes the system bootable by
    installing system files like `/etc/fstab`, configures the bootloader, makes
    the network operable, and installs packages like raspi-config.  At this
    stage the system should boot to a local console from which you have the
    means to perform basic tasks needed to configure and install the system.
 
- - **Stage 2** - lite system.  This stage produces the Raspberry Pi OS Lite image.
+ - **Stage 2** - lite RasQberry system.  This stage produces the RasQberry Pi OS Lite image.
    Stage 2 installs some optimized memory functions, sets timezone and charmap
    defaults, installs fake-hwclock and ntp, wireless LAN and bluetooth support,
    dphys-swapfile, and other basics for managing the hardware.  It also
@@ -345,18 +350,20 @@ maintenance and allows for more easy customization.
    creating an image to deploy in products, be sure to remove extraneous development
    tools before deployment.
 
- - **Stage 3** - desktop system.  Here's where you get the full desktop system
+ - **Stage 3** - RasQberry desktop system.  Here's where you get the full desktop system
    with X11 and LXDE, web browsers, git for development, Raspberry Pi OS custom UI
    enhancements, etc.  This is a base desktop system, with some development
    tools installed.
 
- - **Stage 4** - Normal Raspberry Pi OS image. System meant to fit on a 4GB card.
-   This is the    stage that installs most things that make Raspberry Pi OS friendly
+ - **Stage 4** - Normal RasQberry Pi OS image. System meant to fit on a 4GB card.
+   This is the stage that installs most things that make Raspberry Pi OS friendly
    to new users - e.g. system documentation.
 
- - **Stage 5** - The Raspberry Pi OS Full image. More development
+ - **Stage 5** - The RasQberry Pi OS Full image. More development
    tools, an email client, learning tools like Scratch, specialized packages
    like sonic-pi, office productivity, etc.
+
+   ToDos: RasQberry Demos will also be installed in this stage.
 
 ### Stage specification
 
