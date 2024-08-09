@@ -1,20 +1,9 @@
-#./work/stage4/rootfs/usr/lib/raspi-config
-#./work/stage4/rootfs/usr/bin/raspi-config
-#./work/stage4/rootfs/usr/share/raspi-config
-#./work/stage4/rootfs/usr/share/doc/raspi-config
-#./work/stage4/rootfs/etc/init.d/raspi-config
+#!/bin/bash -e
 
-
-on_chroot << EOF
-    echo "starting qiskit setup"
-    # Copy the raspi-config file to the desired locations
-	cp ./config/raspi-config ../../work/stage4/rootfs/usr/lib/raspi-config
-    cp ./config/raspi-config ../../work/stage4/rootfs/usr/bin/raspi-config
-    cp ./config/raspi-config ../../work/stage4/rootfs/usr/share/raspi-config
-    cp ./config/raspi-config ../../work/stage4/rootfs/usr/share/doc/raspi-config
-    cp ./config/raspi-config ../../work/stage4/rootfs/etc/init.d/raspi-config
-
-    SUDO_USER="${FIRST_USER_NAME}" cp ./bin/*  ../../work/stage4/rootfs/usr/bin/
-    SUDO_USER="${FIRST_USER_NAME}" mkdir -p ../../work/stage4/rootfs/usr/config && cp./config/config-env/*  ../../work/stage4/rootfs/usr/config
-    echo "end qiskit setup"
-EOF
+echo "starting qiskit setup"
+# Copy the raspi-config file to the desired locations
+cp  config/raspi-config  ${ROOTFS_DIR}/usr/bin/raspi-config
+cp  config/raspi-config  ${ROOTFS_DIR}/etc/init.d/raspi-config
+SUDO_USER="${FIRST_USER_NAME}" cp /bin/*   ${ROOTFS_DIR}/usr/bin/
+SUDO_USER="${FIRST_USER_NAME}" mkdir -p  ${ROOTFS_DIR}/usr/config && cp config/config-env/*   ${ROOTFS_DIR}/usr/config
+echo "end qiskit setup"
