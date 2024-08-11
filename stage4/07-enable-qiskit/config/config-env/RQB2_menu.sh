@@ -8,7 +8,18 @@ export RQB2_CONFDIR=.local/config
 [ ! -d ~/$RQB2_CONFDIR ] && mkdir -p ~/$RQB2_CONFDIR
 cp /home/$SUDO_USER/usr/bin/rq*.sh ~/.local/bin
 cp /home/$SUDO_USER/usr/config/* ~/$RQB2_CONFDIR
-ln -sf ~/$RQB2_CONFDIR/env-config.sh ~/.local/bin
+SOURCE_FILE=~/"$RQB2_CONFDIR/env-config.sh"
+TARGET_LINK=~/.local/bin/env-config.sh
+
+# Check if the symbolic link already exists
+if [ ! -L "$TARGET_LINK" ]; 
+then
+    # If the link doesn't exist, create it
+    ln -sf "$SOURCE_FILE" "$TARGET_LINK"
+    echo "Symbolic link created: $TARGET_LINK -> $SOURCE_FILE"
+else
+    echo "Symbolic link already exists: $TARGET_LINK"
+fi
 
 # Load environment variables
 . /home/$SUDO_USER/.local/bin/env-config.sh
