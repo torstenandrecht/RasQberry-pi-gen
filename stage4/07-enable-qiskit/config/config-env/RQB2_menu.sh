@@ -3,6 +3,12 @@
 ############# CONFIGURATION METHODS #############
 
 ### Initial
+export RQB2_CONFDIR=.local/config
+[ ! -d ~/.local/bin ] && mkdir -p ~/.local/bin
+[ ! -d ~/$RQB2_CONFDIR ] && mkdir -p ~/$RQB2_CONFDIR
+cp /home/$SUDO_USER/usr/bin/rq*.sh ~/.local/bin
+cp /home/$SUDO_USER/usr/config/* ~/$RQB2_CONFDIR
+ln -sf ~/$RQB2_CONFDIR/env-config.sh ~/.local/bin
 
 # Load environment variables
 . /home/$SUDO_USER/.local/bin/env-config.sh
