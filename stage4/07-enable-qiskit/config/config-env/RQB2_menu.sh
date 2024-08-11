@@ -6,8 +6,8 @@
 export RQB2_CONFDIR=.local/config
 [ ! -d ~/.local/bin ] && mkdir -p ~/.local/bin
 [ ! -d ~/$RQB2_CONFDIR ] && mkdir -p ~/$RQB2_CONFDIR
-cp /home/$SUDO_USER/usr/bin/rq*.sh ~/.local/bin
-cp /home/$SUDO_USER/usr/config/* ~/$RQB2_CONFDIR
+cp /usr/bin/rq*.sh ~/.local/bin
+cp /usr/config/* ~/$RQB2_CONFDIR
 SOURCE_FILE=~/"$RQB2_CONFDIR/env-config.sh"
 TARGET_LINK=~/.local/bin/env-config.sh
 
