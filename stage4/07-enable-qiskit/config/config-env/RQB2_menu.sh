@@ -16,8 +16,7 @@ SOURCE_FILE=/home/$SUDO_USER/"$RQB2_CONFDIR/env-config.sh"
 TARGET_LINK=/home/$SUDO_USER/.local/bin/env-config.sh
 # Check if the symbolic link already exists
 if [ ! -L "$TARGET_LINK" ]; 
-then
-    sudo rm "$TARGET_LINK"      
+then 
     # If the link doesn't exist, create it
     sudo ln -sf "$SOURCE_FILE" "$TARGET_LINK"
     echo "Symbolic link created: $TARGET_LINK -> $SOURCE_FILE"
