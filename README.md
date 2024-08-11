@@ -472,6 +472,7 @@ If you are using WSL to build you may have to enable the service `sudo update-bi
 ### Step 9:
       Run this on seperate terminal on macos 
          docker cp <containerid>:/pathto/image/<imagename>.img </pathtomacos/imagefolder> 
+         most of time image will be in container at path /RasQberry-pi-gen/work/export-image/YYYY-MM-DD-rasqberry-bookworm--full.img
 
 
    
