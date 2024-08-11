@@ -4,18 +4,22 @@
 
 ### Initial
 export RQB2_CONFDIR=.local/config
-[ ! -d ~/.local/bin ] && mkdir -p ~/.local/bin
-[ ! -d ~/$RQB2_CONFDIR ] && mkdir -p ~/$RQB2_CONFDIR
-cp /usr/bin/rq*.sh ~/.local/bin
-cp /usr/config/* ~/$RQB2_CONFDIR
-SOURCE_FILE=~/"$RQB2_CONFDIR/env-config.sh"
-TARGET_LINK=~/.local/bin/env-config.sh
+[ ! -d /home/$SUDO_USER/.local/bin ] && sudo  mkdir -p /home/$SUDO_USER/.local/bin
+[ ! -d /home/$SUDO_USER/$RQB2_CONFDIR ] && sudo  mkdir -p /home/$SUDO_USER/$RQB2_CONFDIR
+sudo chmod -R 755 /home/$SUDO_USER/.local/bin
+sudo chmod -R 755 /home/$SUDO_USER/$RQB2_CONFDIR
+sudo cp /usr/bin/rq*.sh /home/$SUDO_USER/.local/bin
+sudo cp /usr/config/* /home/$SUDO_USER/$RQB2_CONFDIR
+#ln -sf ~/$RQB2_CONFDIR/env-config.sh ~/.local/bin
 
+SOURCE_FILE=/home/$SUDO_USER/"$RQB2_CONFDIR/env-config.sh"
+TARGET_LINK=/home/$SUDO_USER/.local/bin/env-config.sh
 # Check if the symbolic link already exists
 if [ ! -L "$TARGET_LINK" ]; 
 then
+    sudo rm "$TARGET_LINK"      
     # If the link doesn't exist, create it
-    ln -sf "$SOURCE_FILE" "$TARGET_LINK"
+    sudo ln -sf "$SOURCE_FILE" "$TARGET_LINK"
     echo "Symbolic link created: $TARGET_LINK -> $SOURCE_FILE"
 else
     echo "Symbolic link already exists: $TARGET_LINK"
