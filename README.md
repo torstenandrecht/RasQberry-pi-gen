@@ -451,3 +451,31 @@ To resolve this, ensure that the following files are available (install them if 
 You may also need to load the module by hand - run `modprobe binfmt_misc`.
 
 If you are using WSL to build you may have to enable the service `sudo update-binfmts --enable`
+
+## Building Image in debain containter in Rancher Desktop on MacOS
+### Step 1: 
+      docker run --privileged -v /lib/modules:/lib/modules -it --name debian-build debian:latest
+### Step 2:
+      apt-get update
+### Step 3:
+      apt-get install -y coreutils quilt parted qemu-user-static debootstrap zerofree zip dosfstools libarchive-tools libcap2-bin grep rsync xz-utils file git curl bc gpg pigz xxd arch-test bash kmod  nano sed
+### Step 4:
+      git clone -b arm64 https://github.com/rishimathur14/RasQberry-pi-gen.git
+### Step 5:
+      chmod -R 755 /RasQberry-pi-gen
+### Step 6:
+      cd RasQberry-pi-gen
+### Step 7:
+      chmod +x ./build.sh
+### Step 8:
+      ./build.sh -c config
+### Step 9:
+      Run this on seperate terminal on macos 
+         docker cp <containerid>:/pathto/image/<imagename>.img </pathtomacos/imagefolder> 
+         most of time image will be in container at path /RasQberry-pi-gen/work/export-image/YYYY-MM-DD-rasqberry-bookworm--full.img
+
+
+   
+
+
+
