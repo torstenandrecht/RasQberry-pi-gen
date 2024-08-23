@@ -18,5 +18,17 @@ chmod +x  ${ROOTFS_DIR}/usr/bin/
 chmod +x  ${ROOTFS_DIR}/usr/config 
 # Clean up the temporary clone directory if needed
 # Install Qiskit using pip
-pip3 install qiskit
+mkdir -p /home/${FIRST_USER_NAME}/qiskit_env
+
+python3 -m venv /home/${FIRST_USER_NAME}/qiskit_env
+
+source /home/${FIRST_USER_NAME}/qiskit_env/bin/activate
+
+pip install --upgrade pip
+
+pip install qiskit
+
+deactivate
+
+echo "source /home/${FIRST_USER_NAME}/qiskit_env/bin/activate" >> ${ROOTFS_DIR}/etc/skel/.bashrc
 rm -rf $CLONE_DIR
