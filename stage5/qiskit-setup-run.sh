@@ -17,4 +17,6 @@ mkdir -p  ${ROOTFS_DIR}/usr/config && cp $CLONE_DIR/config/*   ${ROOTFS_DIR}/usr
 chmod +x  ${ROOTFS_DIR}/usr/bin/
 chmod +x  ${ROOTFS_DIR}/usr/config 
 # Clean up the temporary clone directory if needed
+# Install Qiskit using pip
+pip3 install qiskit
 rm -rf $CLONE_DIR
