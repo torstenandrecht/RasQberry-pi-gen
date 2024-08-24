@@ -18,7 +18,7 @@ chmod +x  ${ROOTFS_DIR}/usr/bin/
 chmod +x  ${ROOTFS_DIR}/usr/config 
 # Clean up the temporary clone directory if needed
 # Install Qiskit using pip
-echo "install qiskit for ${FIRST_USER_NAME} user
+echo "install qiskit for ${FIRST_USER_NAME} user"
 mkdir -p /home/${FIRST_USER_NAME}/qiskit_env
 
 python3 -m venv /home/${FIRST_USER_NAME}/qiskit_env
