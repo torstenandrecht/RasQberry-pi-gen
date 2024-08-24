@@ -32,5 +32,6 @@ pip install qiskit
 deactivate
 cp -r /home/rasqberry/qiskit_env ${ROOTFS_DIR}/home/rasqberry/
 echo "source /home/${FIRST_USER_NAME}/qiskit_env/bin/activate" >> ${ROOTFS_DIR}/etc/skel/.bashrc
+echo "source /home/${FIRST_USER_NAME}/qiskit_env/bin/activate" >> /home/${FIRST_USER_NAME}/.bashrc
 echo "install qiskit end for ${FIRST_USER_NAME}"
 rm -rf $CLONE_DIR
