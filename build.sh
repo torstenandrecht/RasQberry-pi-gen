@@ -193,6 +193,9 @@ export DEPLOY_DIR=${DEPLOY_DIR:-"${BASE_DIR}/deploy"}
 export GIT_BRANCH=${GIT_BRANCH}
 export GIT_REPO=${GIT_REPO}
 export RASP_WGET=${RASP_WGET}
+export REPO=${REPO}
+export STD_VENV=${STD_VENV}
+export RQB2_CONFDIR=${RQB2_CONFDIR}
 
 # DEPLOY_ZIP was deprecated in favor of DEPLOY_COMPRESSION
 # This preserve the old behavior with DEPLOY_ZIP=0 where no archive was created
