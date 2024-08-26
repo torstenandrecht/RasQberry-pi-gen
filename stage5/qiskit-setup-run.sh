@@ -36,7 +36,7 @@ source /home/"${FIRST_USER_NAME}"/$REPO/venv/$STD_VENV/bin/activate
 
 deactivate
 cp -r /home/rasqberry/* ${ROOTFS_DIR}/home/rasqberry/
-echo "source /\$home/$REPO/venv/$STD_VENV/bin/activate" >> ${ROOTFS_DIR}/etc/skel/.bashrc
-echo "source /\$home/$REPO/venv/$STD_VENV/bin/activate >> "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/.bashrc
+echo "source /\$HOME/$REPO/venv/$STD_VENV/bin/activate" >> ${ROOTFS_DIR}/etc/skel/.bashrc
+echo "source /\$HOME/$REPO/venv/$STD_VENV/bin/activate >> "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/.bashrc
 echo "install qiskit end for ${FIRST_USER_NAME}"
 rm -rf $CLONE_DIR
