@@ -19,3 +19,4 @@ RASP_WGET="https://raw.githubusercontent.com/JanLahmann/RasQberry-raspi-config/b
 REPO="RasQberry-Two"
 STD_VENV="RQB2"
 RQB2_CONFDIR=".local/config" 
+PIGEN="TRUE"
