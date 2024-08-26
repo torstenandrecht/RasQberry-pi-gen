@@ -32,7 +32,7 @@ python3 -m venv /home/${FIRST_USER_NAME}/$REPO/venv/$STD_VENV
 
 source /home/"${FIRST_USER_NAME}"/$REPO/venv/$STD_VENV/bin/activate
  
-.  /home/"${FIRST_USER_NAME}"/.local/bin/rq_install_Qiskit_latest.sh "image"
+.  /home/"${FIRST_USER_NAME}"/.local/bin/rq_install_Qiskit_latest.sh
 
 deactivate
 cp -r /home/rasqberry/* ${ROOTFS_DIR}/home/rasqberry/
