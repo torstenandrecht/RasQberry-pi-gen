@@ -17,10 +17,11 @@ wget ${RASP_WGET} -O raspi-config
 [ ! -d /home/${FIRST_USER_NAME}/.local/bin ] && sudo  mkdir -p /home/${FIRST_USER_NAME}/.local/bin
 [ ! -d /home/${FIRST_USER_NAME}/${RQB2_CONFDIR} ] && sudo  mkdir -p /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}
 
-cp cp ${CLONE_DIR}/bin/* /home/${FIRST_USER_NAME}/.local/bin/*
-cp cp ${CLONE_DIR}/config/* /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}/*
+cp ${CLONE_DIR}/bin/* /home/${FIRST_USER_NAME}/.local/bin/
+cp ${CLONE_DIR}/config/* /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}/
 
-chmod 755 /home/${FIRST_USER_NAME}/.local/bin /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}
+chmod 755 /home/${FIRST_USER_NAME}/.local/bin 
+chmod 755 /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}
 
 # Clean up the temporary clone directory if needed
 # Install Qiskit using pip
