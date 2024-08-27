@@ -35,7 +35,8 @@ source /home/"${FIRST_USER_NAME}"/$REPO/venv/$STD_VENV/bin/activate
 .  /home/"${FIRST_USER_NAME}"/.local/bin/rq_install_Qiskit_latest.sh
 
 deactivate
-cp -r /home/rasqberry/* ${ROOTFS_DIR}/home/rasqberry/
+
+cp -r /home/rasqberry/.local  "${ROOTFS_DIR}"/home/rasqberry/
 echo "source /home/${FIRST_USER_NAME}/$REPO/venv/$STD_VENV/bin/activate" >> "${ROOTFS_DIR}"/home/"${FIRST_USER_NAME}"/.bashrc
 echo "install qiskit end for ${FIRST_USER_NAME}"
 rm -rf $CLONE_DIR
