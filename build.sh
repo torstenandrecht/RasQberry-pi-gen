@@ -190,13 +190,14 @@ export SCRIPT_DIR="${BASE_DIR}/scripts"
 export WORK_DIR="${WORK_DIR:-"${BASE_DIR}/work/${IMG_NAME}"}"
 export DEPLOY_DIR=${DEPLOY_DIR:-"${BASE_DIR}/deploy"}
 #Variable for stage 5
-export GIT_BRANCH=${GIT_BRANCH}
-export GIT_REPO=${GIT_REPO}
-export RASP_WGET=${RASP_WGET}
-export REPO=${REPO}
-export STD_VENV=${STD_VENV}
-export RQB2_CONFDIR=${RQB2_CONFDIR}
-export PIGEN=${PIGEN}
+export GIT_BRANCH=${GIT_BRANCH:-30-sw-platform}
+export GIT_REPO=${GIT_REPO:-https://github.com/JanLahmann/RasQberry-Two.git}
+export RASP_WGET=${RASP_WGET:-https://raw.githubusercontent.com/JanLahmann/RasQberry-raspi-config/bookworm/raspi-config}
+export REPO=${REPO:-RasQberry-Two}
+export STD_VENV=${STD_VENV:-RQB2}
+export RQB2_CONFDIR=${RQB2_CONFDIR:-.local/config}
+export PIGEN=${PIGEN:-true}
+
 
 # DEPLOY_ZIP was deprecated in favor of DEPLOY_COMPRESSION
 # This preserve the old behavior with DEPLOY_ZIP=0 where no archive was created
@@ -213,7 +214,7 @@ export LOG_FILE="${WORK_DIR}/build.log"
 export TARGET_HOSTNAME=${TARGET_HOSTNAME:-raspberrypi}
 
 export FIRST_USER_NAME=${FIRST_USER_NAME:-pi}
-export FIRST_USER_PASS
+export FIRST_USER_PASS=${FIRST_USER_NAME:-pi}
 export DISABLE_FIRST_BOOT_USER_RENAME=${DISABLE_FIRST_BOOT_USER_RENAME:-0}
 export WPA_COUNTRY
 export ENABLE_SSH="${ENABLE_SSH:-0}"
