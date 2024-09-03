@@ -27,7 +27,7 @@ cp ${CLONE_DIR}/bin/* /home/${FIRST_USER_NAME}/.local/bin/
 cp ${CLONE_DIR}/config/* /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}/
 
 cp ${CLONE_DIR}/bin/* ${ROOTFS_DIR}/usr/bin
-cp ${CLONE_DIR}/config ${ROOTFS_DIR}/usr/config
+cp ${CLONE_DIR}/config/* ${ROOTFS_DIR}/usr/config
 
 chmod 755 /home/${FIRST_USER_NAME}/.local/bin 
 chmod 755 /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}
