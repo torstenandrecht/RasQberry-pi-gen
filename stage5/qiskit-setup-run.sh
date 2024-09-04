@@ -1,4 +1,4 @@
-o#!/bin/bash -e
+#!/bin/bash -e
 
 # Clone the Git repository
 export CLONE_DIR="/tmp/${REPO}"
