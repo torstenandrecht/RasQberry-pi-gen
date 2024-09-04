@@ -15,8 +15,8 @@ wget ${RASP_WGET} -O raspi-config
  cp  raspi-config  ${ROOTFS_DIR}/etc/init.d/raspi-config
 
 echo "FIRST_USER_NAME    : ${FIRST_USER_NAME}"
-[ ! -d /home/${FIRST_USER_NAME}/.local/bin ] && sudo  mkdir -p /home/${FIRST_USER_NAME}/.local/bin
-[ ! -d /home/${FIRST_USER_NAME}/${RQB2_CONFDIR} ] && sudo  mkdir -p /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}
+[ ! -d /home/${FIRST_USER_NAME}/.local/bin ] && mkdir -p /home/${FIRST_USER_NAME}/.local/bin
+[ ! -d /home/${FIRST_USER_NAME}/${RQB2_CONFDIR} ] && mkdir -p /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}
 [ ! -d ${ROOTFS_DIR}/usr/config ] && sudo  mkdir -p ${ROOTFS_DIR}/usr/config
 [ ! -d ${ROOTFS_DIR}/usr/venv ] && sudo  mkdir -p ${ROOTFS_DIR}/usr/venv
 
