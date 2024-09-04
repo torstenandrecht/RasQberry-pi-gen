@@ -49,6 +49,7 @@ cp -r /home/${FIRST_USER_NAME}/.local  "${ROOTFS_DIR}"/home/${FIRST_USER_NAME}/
 cp  -r /home/${FIRST_USER_NAME}/$REPO "${ROOTFS_DIR}"/home/${FIRST_USER_NAME}/
 cp  -r /home/${FIRST_USER_NAME}/$REPO  "${ROOTFS_DIR}"/usr/venv
 echo "source /home/${FIRST_USER_NAME}/$REPO/venv/$STD_VENV/bin/activate" >> "${ROOTFS_DIR}"/home/"${FIRST_USER_NAME}"/.bashrc
-echo ". /usr/config/setup_qiskit_env.sh" >> ${ROOTFS_DIR}/etc/skel/.bashrc
+export LINE=". /usr/config/setup_qiskit_env.sh"
+echo "$LINE" >> ${ROOTFS_DIR}/etc/skel/.bashrc
 echo "install qiskit end for ${FIRST_USER_NAME}"
 rm -rf $CLONE_DIR
