@@ -1,7 +1,9 @@
 #!/bin/bash
 # Enable VNC and set boot to desktop with autologin for any user using raspi-config in non-interactive mode
 on_chroot << EOF
-raspi-config nonint do_vnc 0
+    raspi-config nonint do_vnc 1
+    systemctl enable wayvnc.service
+    systemctl start wayvnc.service
 EOF
 
 # Set boot option to desktop with autologin (non-interactive mode)
@@ -16,6 +18,6 @@ EOF
 
 # Optional: Set resolution for headless operation
 echo "hdmi_force_hotplug=1" >> ${ROOTFS_DIR}/boot/config.txt
-echo "hdmi_group=2" >> ${ROOTFS_DIR}/boot/config.txt
-echo "hdmi_mode=85" >> ${ROOTFS_DIR}/boot/config.txt
+echo "hdmi_group=1" >> ${ROOTFS_DIR}/boot/config.txt
+echo "hdmi_mode=1" >> ${ROOTFS_DIR}/boot/config.txt
 
