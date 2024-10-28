@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
 # Clone the Git repository
+echo "Starting qiskit Installation"
 export CLONE_DIR="/tmp/${REPO}"
 
 if [ ! -d "${CLONE_DIR}" ]; then
@@ -37,7 +38,7 @@ chmod 755 /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}
 echo "install qiskit for ${FIRST_USER_NAME} user"
 mkdir -p /home/${FIRST_USER_NAME}/$REPO/venv/$STD_VENV
 
-python3 -m venv /home/${FIRST_USER_NAME}/$REPO/venv/$STD_VENV
+python3 -m venv /home/${FIRST_USER_NAME}/$REPO/venv/$STD_VENV --system-site-packages
 
 source /home/${FIRST_USER_NAME}/$REPO/venv/$STD_VENV/bin/activate
  
@@ -53,3 +54,4 @@ echo "$LINE" >> ${ROOTFS_DIR}/etc/skel/.bashrc
 echo "$LINE" >> ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/.bashrc
 echo "install qiskit end for ${FIRST_USER_NAME}"
 rm -rf $CLONE_DIR
+echo "End  qiskit Installation"
