@@ -1,5 +1,13 @@
+#!/bin/bash -e
+
 echo "Starting docker Installation"
-curl -sSL https://get.docker.com | sh
+on_chroot << EOF
+	SUDO_USER="${FIRST_USER_NAME}" curl -sSL https://get.docker.com | sh
+EOF
+
 echo "Add docker user"
-sudo usermod -aG docker ${FIRST_USER_NAME}
+on_chroot << EOF
+	SUDO_USER="${FIRST_USER_NAME}" sudo usermod -aG docker ${FIRST_USER_NAME}
+EOF
+
 
