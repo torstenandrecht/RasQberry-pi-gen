@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash -e
+
 echo "Starting Docker Installation"
 
 sudo apt-get update
@@ -13,3 +14,5 @@ echo \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
+
+echo "Ending Docker Installation"
