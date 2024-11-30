@@ -22,7 +22,7 @@ below.
 To install the required dependencies for `rasqberry-pi-gen` you should run:
 
 ```bash
-apt-get install coreutils quilt parted qemu-user-static debootstrap zerofree zip \
+sudo apt-get install coreutils quilt parted qemu-user-static debootstrap zerofree zip \
 dosfstools libarchive-tools libcap2-bin grep rsync xz-utils file git curl bc \
 gpg pigz xxd arch-test
 ```
@@ -36,7 +36,7 @@ Getting started is as simple as cloning this repository on your build machine. Y
 can do so with (non-root user)
 
 ```bash
-git clone --branch arm64 https://github.com/JanLahmann/RasQberry-pi-gen.git
+git clone --branch 30-sw-platform https://github.com/JanLahmann/RasQberry-pi-gen.git
 ```
 
 `--depth 1` can be added afer `git clone` to create a shallow clone, only containing
@@ -216,10 +216,10 @@ A simple example for building Raspberry Pi OS:
 IMG_NAME='rasqberry-two'
 ```
 
-The config file (execution as root) can also be specified on the command line as an argument the `build.sh` or `build-docker.sh` scripts.
+The config file (execution as sudo user) can also be specified on the command line as an argument the `build.sh` or `build-docker.sh` scripts.
 
 ```
-./build.sh -c config
+sudo ./build.sh -c config
 ```
 
 This is parsed after `config` so can be used to override values set there.
