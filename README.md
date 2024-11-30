@@ -36,7 +36,7 @@ Getting started is as simple as cloning this repository on your build machine. Y
 can do so with (non-root user)
 
 ```bash
-git clone --branch arm64 https://github.com/JanLahmann/RasQberry-pi-gen.git
+git clone --branch 30-sw-platform https://github.com/JanLahmann/RasQberry-pi-gen.git
 ```
 
 `--depth 1` can be added afer `git clone` to create a shallow clone, only containing
