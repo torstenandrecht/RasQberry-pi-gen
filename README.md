@@ -216,10 +216,10 @@ A simple example for building Raspberry Pi OS:
 IMG_NAME='rasqberry-two'
 ```
 
-The config file (execution as sudo user) can also be specified on the command line as an argument the `build.sh` or `build-docker.sh` scripts.
+The config file (execution as sudo user with the UID 1000 e.g. the rasqberry user) can also be specified on the command line as an argument the `build.sh` or `build-docker.sh` scripts.
 
 ```
-sudo ./build.sh -c config
+sudo ./build.sh
 ```
 
 This is parsed after `config` so can be used to override values set there.
